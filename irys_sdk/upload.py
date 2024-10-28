@@ -1,6 +1,7 @@
 
 from urllib.parse import urljoin
 import requests
+from random import randbytes
 
 from irys_sdk.bundle.tags import Tags
 from irys_sdk.bundle.dataitem import DataItem
@@ -30,7 +31,8 @@ class Upload:
 
     def upload(self, data: bytearray, tags: Tags = None, target: str = None, anchor: str = None, **upload_opts):
         signer = self.irys.token_config.get_signer()
-        tx = create_data(data, signer, tags, target, anchor)
+        tx = create_data(data, signer, tags, target,
+                         anchor if anchor else randbytes(16).hex())
         sign(tx, signer)
         if not tx.is_valid():
             raise Exception("internal error - produced data item is invalid")
