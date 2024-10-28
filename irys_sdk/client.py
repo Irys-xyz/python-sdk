@@ -45,3 +45,5 @@ def get_token(token: str) -> "BaseToken":
     match token:
         case "ethereum":
             return EthereumToken
+        case _:
+            raise Exception("Unknown/unsupported token {}".format(token))
