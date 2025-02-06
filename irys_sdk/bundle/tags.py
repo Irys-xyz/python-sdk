@@ -1,10 +1,12 @@
 import io
 from collections.abc import MutableSequence
+from typing import Dict
 import avro.schema
 from avro.io import DatumReader, DatumWriter
 
 # name value
 type Tag = tuple[str, str]
+# Tags aren't defined as a dict, as the spec allows for duplicate tag names/keys
 type Tags = list[Tag]
 
 schema = avro.schema.parse("""
@@ -19,6 +21,10 @@ schema = avro.schema.parse("""
     }
 }
 """)
+
+
+def from_dict(tags: Dict[str, str]) -> Tags:
+    return list(tags.items())
 
 
 def encode_tags(tags: MutableSequence[Tag]) -> bytes:

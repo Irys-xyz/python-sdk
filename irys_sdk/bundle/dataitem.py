@@ -64,13 +64,13 @@ class DataItem:
         return signer.verify(item.raw_owner, signature_data, item.raw_signature)
 
     @property
-    def id(self):
-        return b58encode(self.raw_id)
+    def id(self) -> str:
+        return b58encode(self.raw_id).decode('utf-8')
 
     # set id
 
     @property
-    def raw_id(self):
+    def raw_id(self) -> bytes:
         return hashlib.sha256(self.raw_signature).digest()
 
     # set rawid
