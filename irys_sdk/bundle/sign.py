@@ -1,5 +1,6 @@
 from __future__ import annotations
 import hashlib
+from irys_sdk.bundle.dataitem import DataItem
 from irys_sdk.bundle.signers.signer import Signer
 from irys_sdk.bundle.utils import set_bytes
 
