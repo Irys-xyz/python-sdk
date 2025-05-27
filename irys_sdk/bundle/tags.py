@@ -5,9 +5,9 @@ import avro.schema
 from avro.io import DatumReader, DatumWriter
 
 # name value
-type Tag = tuple[str, str]
+Tag = tuple[str, str]
 # Tags aren't defined as a dict, as the spec allows for duplicate tag names/keys
-type Tags = list[Tag]
+Tags = list[Tag]
 
 schema = avro.schema.parse("""
 {"type": "array",

@@ -5,10 +5,6 @@ from irys_sdk.bundle.signers.signer import Signer
 from irys_sdk.bundle.utils import long_to_8_byte_array, set_bytes, short_to_2_byte_array
 
 
-# type DataItemCreateOptions = {'target': Tags,
-#                               'target': str, 'anchor': str}
-
-
 def create_data(data: bytearray | str, signer: Signer, tags: Tags = None, target: str = None, anchor: str = None) -> DataItem:
     owner = signer.public_key
     # target = opts.get('target')
