@@ -5,9 +5,11 @@ This is a simple package which enables you to interact with the Irys Network thr
 
 ## Usage
 
+For a full basic example, see [examples/basic.py](./examples/basic.py)
+
 ### Build the client
 ```py
-from irys_sdk.Builder import Builder
+from irys_sdk import Builder
 
 client = Builder("ethereum").wallet("...").build()
 # wallet is the only required argument, but there are others i.e rpc_url("...") to set a custom RPC URL
