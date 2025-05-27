@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "irys-sdk"
-version = "0.1.5"
+version = "0.1.6"
 description = "Official python SDK for Irys bundlers"
 authors = ["Jesse Wright <jesse@irys.xyz>"]
 license = "MIT"

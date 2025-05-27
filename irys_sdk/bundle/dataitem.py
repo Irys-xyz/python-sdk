@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 from typing import Any
 from irys_sdk.bundle.constants import MAX_TAG_BYTES, MIN_BINARY_SIZE, SIG_CONFIG
 from irys_sdk.bundle.sign import get_signature_data, sign

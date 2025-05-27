@@ -1,8 +1,9 @@
 from __future__ import annotations
 import hashlib
-from irys_sdk.bundle.dataitem import DataItem
-from irys_sdk.bundle.signers.signer import Signer
-from irys_sdk.bundle.utils import set_bytes
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from irys_sdk.bundle.dataitem import DataItem
+    from irys_sdk.bundle.signers.signer import Signer
 
 
 def sign(item: 'DataItem', signer: Signer) -> bytearray:

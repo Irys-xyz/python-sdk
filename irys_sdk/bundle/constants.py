@@ -41,9 +41,3 @@ SIG_CONFIG = {
     }
 
 }
-
-type SignatureConfig = {
-    "sigLength": int,
-    "pubLength": int,
-    "sigName": str
-}  # type: ignore

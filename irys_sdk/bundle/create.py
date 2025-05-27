@@ -1,6 +1,6 @@
 import base64
-from irys_sdk.bundle.tags import encode_tags, Tags
 from irys_sdk.bundle.dataitem import DataItem
+from irys_sdk.bundle.tags import encode_tags, Tags
 from irys_sdk.bundle.signers.signer import Signer
 from irys_sdk.bundle.utils import long_to_8_byte_array, set_bytes, short_to_2_byte_array
 

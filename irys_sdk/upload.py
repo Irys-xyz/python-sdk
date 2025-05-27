@@ -3,8 +3,8 @@ from urllib.parse import urljoin
 import requests
 from random import randbytes
 
-from irys_sdk.bundle.tags import Tags
 from irys_sdk.bundle.dataitem import DataItem
+from irys_sdk.bundle.tags import Tags
 from irys_sdk.bundle.create import create_data
 from irys_sdk.bundle.sign import sign
 

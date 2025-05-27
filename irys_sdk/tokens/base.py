@@ -1,8 +1,11 @@
 from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Tuple
-from irys_sdk.bundle.signers.signer import Signer
 from irys_sdk.types import Tx
+
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from irys_sdk.bundle.signers.signer import Signer
 
 
 class BaseToken:
