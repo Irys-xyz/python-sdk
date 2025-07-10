@@ -1,24 +1,32 @@
 from __future__ import annotations
 from typing import Any
-
 from eth_account import Account
 from web3 import Web3
 from irys_sdk.bundle.signers.ethereum import EthereumSigner
 from irys_sdk.tokens.base import BaseToken
 from eth_hash.auto import keccak
 
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from irys_sdk.client import Uploader
+
 
 class EthereumToken(BaseToken):
     irys: "Uploader" = None
     address: str = None
     _provider_instance = None
-
-    base = ("wei", 1e18)
+    name = "ethereum",
+    ticker = "ETH"
+    base = ("wei", int(1e18))
 
     def __init__(self, irys, **kwargs):
         self.irys = irys
+
         self.provider_url = kwargs.get(
             "provider_url") or "https://cloudflare-eth.com/"
+        self.name = kwargs.get("name") or "ethereum"
+        self.ticker = kwargs.get("ticker") or "ETH"
+
         self._wallet = kwargs.get("wallet")
         if self._wallet == None:
             raise Exception("missing required wallet arg")
@@ -64,9 +72,13 @@ class EthereumToken(BaseToken):
         }
 
         signed_tx = Account.sign_transaction(txb, self._wallet)
+
         return (signed_tx)
 
     def send_tx(self, tx: Any) -> Any:
         provider = self.get_provider()
-        res = provider.eth.send_raw_transaction(tx.raw_transaction)
-        return res.to_0x_hex()
+        # res = provider.eth.send_raw_transaction(tx.raw_transaction)
+        # return res.to_0x_hex()
+
+        res = provider.eth.send_raw_transaction(tx.rawTransaction)
+        return res.hex()

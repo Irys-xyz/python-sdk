@@ -8,6 +8,10 @@ from irys_sdk.bundle.tags import Tags
 from irys_sdk.bundle.create import create_data
 from irys_sdk.bundle.sign import sign
 
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from irys_sdk.client import Uploader
+
 
 class Upload:
     irys: "Uploader"
@@ -17,7 +21,7 @@ class Upload:
         self.url = irys.url
 
     def upload_tx(self, tx: DataItem, **upload_opts):
-        post_url = urljoin(self.url, "/tx/{}".format(self.irys.token))
+        post_url = urljoin(self.url, "/tx/{}".format(self.irys.token_name))
         response = requests.post(post_url, data=tx.get_raw(), headers={
                                  "content-type": "application/octet-stream"})
         match response.status_code:
@@ -30,7 +34,7 @@ class Upload:
                     "Unexpected status code {} - {}".format(response.status_code, response.content))
 
     def upload(self, data: bytearray, tags: Tags = None, target: str = None, anchor: str = None, **upload_opts):
-        signer = self.irys.token_config.get_signer()
+        signer = self.irys.token.get_signer()
         tx = create_data(data, signer, tags, target,
                          anchor if anchor else randbytes(16).hex())
         sign(tx, signer)

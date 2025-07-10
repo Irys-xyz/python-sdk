@@ -31,7 +31,7 @@ def confirmation_poll(irys, tx_id):
     # TODO @JesseTheRobot - impl proper tx conf checking logic
     for _i in range(1, 60, 1):
         try:
-            return irys.token_config.get_tx(tx_id)
+            return irys.token.get_tx(tx_id)
         except:
             pass
         sleep(0.5)

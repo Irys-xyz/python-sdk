@@ -10,6 +10,9 @@ if TYPE_CHECKING:
 
 class BaseToken:
     address: str
+    name: str
+    ticker: str
+    base: tuple[str, int]
 
     def __init__(self):
         pass
